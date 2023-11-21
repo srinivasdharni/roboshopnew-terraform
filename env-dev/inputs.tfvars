@@ -1,6 +1,6 @@
 	env               = "dev"
 	project_name      = "roboshop"
-	kms_key_id        = "arn:aws:kms:us-east-1:624783896224:key/82152dd2-da6b-4027-94df-3589614f4c59"
+	##kms_key_id        = "arn:aws:kms:us-east-1:624783896224:key/82152dd2-da6b-4027-94df-3589614f4c59"
 	
 	## VPC
 	vpc_cidr               = "10.0.0.0/16"
