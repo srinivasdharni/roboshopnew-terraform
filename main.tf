@@ -22,3 +22,15 @@
 	  vpc_id         = module.vpc.vpc_id
 	  instance_class = var.instance_class
 	}
+	
+	  module "docdb" {
+	  source = "git::https://github.com/srinivasdharni/tf-module-docdb.git"
+	
+	  component            = "docdb"
+	  env                  = var.env
+	  subnets              = module.vpc.db_subnets
+	  vpc_cidr             = var.vpc_cidr
+	  vpc_id               = module.vpc.vpc_id
+	  docdb_instance_count = var.docdb_instance_count
+	  docdb_instance_class = var.docdb_instance_class
+	}

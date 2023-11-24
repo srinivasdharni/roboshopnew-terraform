@@ -17,3 +17,7 @@
 	## RDS
 	instance_class         = "db.t3.medium"
 	
+	# Docdb
+	docdb_instance_count = 1
+	docdb_instance_class = "db.t3.medium"
+	
