@@ -46,3 +46,16 @@
 	  ec_node_type  = var.ec_node_type
 	  ec_node_count = var.ec_node_count
 	}
+	
+	  module "rabbitmq" {
+	  source = "git::https://github.com/srinivasdharni/tf-module-rabbitmq.git"
+	
+	  component              = "rabbitmq"
+	  env                    = var.env
+	  subnets                = module.vpc.db_subnets
+	  vpc_cidr               = var.vpc_cidr
+	  vpc_id                 = module.vpc.vpc_id
+	  rabbitmq_instance_type = var.rabbitmq_instance_type
+	  zone_id                = "Z0531070279OA6E0HE9DV"
+	  bastion_node_cidr      = var.bastion_node_cidr
+	}
