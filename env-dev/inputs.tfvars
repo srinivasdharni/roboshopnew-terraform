@@ -1,5 +1,6 @@
 	env               = "dev"
 	project_name      = "roboshop"
+	bastion_node_cidr = ["172.31.23.123/32"]
 
 	
 	## VPC
