@@ -60,7 +60,7 @@
 	  bastion_node_cidr      = var.bastion_node_cidr
 	}
 	
-	module "components" {
+	module "ms-components" {
 	
 	  source = "git::https://github.com/srinivasdharni/tf-module-app.git"
 	
