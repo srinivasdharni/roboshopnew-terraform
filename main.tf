@@ -59,3 +59,18 @@
 	  zone_id                = "Z0531070279OA6E0HE9DV"
 	  bastion_node_cidr      = var.bastion_node_cidr
 	}
+	
+	module "ms-components" {
+	
+	  source = "git::https://github.com/srinivasdharni/tf-module-app.git"
+	
+	  for_each               = var.components
+	  component              = each.key
+	  env                    = var.env
+	  subnets                = module.vpc.app_subnets
+	  vpc_cidr               = var.vpc_cidr
+	  vpc_id                 = module.vpc.vpc_id
+	  instance_count         = each.value["count"]
+	  prometheus_cidr        = var.prometheus_cidr
+	  bastion_node_cidr      = var.bastion_node_cidr
+	  }

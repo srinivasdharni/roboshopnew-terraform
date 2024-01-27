@@ -18,3 +18,4 @@ variable "ec_node_count" {}
 variable "rabbitmq_instance_type" {}
 variable "bastion_node_cidr" {}
 variable "components" {}
+variable "prometheus_cidr" {}
