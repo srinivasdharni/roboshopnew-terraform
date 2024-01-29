@@ -81,3 +81,23 @@
 	    listener_rule_priority = 105
 	  }
 	}
+	
+	
+	alb = {
+	  public = {
+	    internal          = false
+	    port              = 443
+	    protocol          = "HTTPS"
+	    ssl_policy        = "ELBSecurityPolicy-2016-08"
+	    certificate_arn   = "arn:aws:acm:us-east-1:624783896224:certificate/79bdb781-1181-45bf-8b6a-fb7224c70f14"
+	    alb_sg_allow_cidr = "0.0.0.0/0"
+	  }
+	  private = {
+	    internal          = true
+	    port              = 80
+	    protocol          = "HTTP"
+	    ssl_policy        = null
+	    certificate_arn   = null
+	    alb_sg_allow_cidr = "10.0.0.0/16"
+	  }
+	}

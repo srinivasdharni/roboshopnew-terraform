@@ -62,6 +62,7 @@
 	
 	module "ms-components" {
 	
+	  depends_on = [module.docdb, module.mysql, module.elasticache, module.rabbitmq]
 	  source = "git::https://github.com/srinivasdharni/tf-module-app.git"
 	
 	  for_each               = var.components
@@ -78,3 +79,18 @@
       zone_id                = "Z0531070279OA6E0HE9DV"
       listener_rule_priority = each.value["listener_rule_priority"]
 	  }
+	  
+	module "alb" {
+	  source            = "git::https://github.com/srinivasdharni/tf-module-alb.git"
+	  for_each          = var.alb
+	  alb_sg_allow_cidr = each.value["alb_sg_allow_cidr"]
+	  alb_type          = each.key
+	  env               = var.env
+	  internal          = each.value["internal"]
+	  subnets           = each.key == "private" ? module.vpc.app_subnets : module.vpc.public_subnets
+	  vpc_id            = module.vpc.vpc_id
+	  port              = each.value["port"]
+	  protocol          = each.value["protocol"]
+	  ssl_policy        = each.value["ssl_policy"]
+	  certificate_arn   = each.value["certificate_arn"]
+	}
