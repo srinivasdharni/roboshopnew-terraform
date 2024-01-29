@@ -20,3 +20,5 @@ variable "bastion_node_cidr" {}
 variable "components" {}
 variable "prometheus_cidr" {}
 variable "alb" {}
+variable "alb_dns_name" {}
+variable "listener_arn" {}
